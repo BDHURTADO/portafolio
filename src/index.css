@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* Dark (default) palette — exact spec */
+  --color-bg: #0B1120;
+  --color-bg-soft: #111827;
+  --color-card: #1F2937;
+  --color-primary: #2563EB;
+  --color-secondary: #38BDF8;
+  --color-success: #22C55E;
+  --color-text: #F8FAFC;
+  --color-text-muted: #CBD5E1;
+  --color-line: #334155;
+
+  --breakpoint-xs: 420px;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html.light {
+  color-scheme: light;
+  --color-bg: #F8FAFC;
+  --color-bg-soft: #FFFFFF;
+  --color-card: #FFFFFF;
+  --color-primary: #2563EB;
+  --color-secondary: #0284C7;
+  --color-success: #16A34A;
+  --color-text: #0B1120;
+  --color-text-muted: #475569;
+  --color-line: #E2E8F0;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line) transparent;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  transition: background-color 300ms ease, color 300ms ease;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.glass {
+  background-color: color-mix(in srgb, var(--color-bg-soft) 70%, transparent);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+::selection {
+  background: var(--color-primary);
+  color: white;
+}
